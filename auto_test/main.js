@@ -1,6 +1,6 @@
 const config = require("../config.json");
 const crypto = require("crypto");
-const ROOT = "SteveWoo";
+const ROOT = "root";
 
 async function create_admins(swc, options){
 	var now = +new Date();
@@ -92,7 +92,7 @@ async function main(){
 		name : 'admin_root',
 		type : '1',
 		account : "admin",
-		password : "lyoko123RAIN"
+		password : "123456"
 	})
 
 	// result = await create_club(swc, {
