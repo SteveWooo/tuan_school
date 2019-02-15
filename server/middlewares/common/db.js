@@ -23,6 +23,7 @@ async function models_defined(swc){
 	swc.db.models.news = swc.db.seq.define("news", {
 		news_id : {type : Sequelize.STRING(32)},
 		club_id : {type : Sequelize.STRING(32)},
+		is_top : {type : Sequelize.INTEGER()},
 		title : {type : Sequelize.STRING()},
 		content : {type : Sequelize.STRING()},
 		images : {type : Sequelize.STRING()},

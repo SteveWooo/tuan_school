@@ -175,6 +175,11 @@ var admin_routers = {
 		module : require("./routers/m/news/change_status"),
 		path : "/api/m/news/change_status",
 		method : "post"
+	},
+	club_news_set_top : {
+		module : require("./routers/m/news/set_top"),
+		path : "/api/m/news/set_top",
+		method : "post"
 	}
 }
 

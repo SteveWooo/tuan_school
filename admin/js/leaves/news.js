@@ -18,6 +18,9 @@ keke.leaves.news = {
 		}, {
 			text : "状态",
 			sortable : false
+		}, {
+			text : "置顶",
+			sortable : false
 		}]
 	},
 	panels : {

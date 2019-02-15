@@ -56,7 +56,8 @@ Vue.component("news", {
 			scope.panels.show_detail.item = item;
 			scope.panels.show_detail.show = !scope.panels.show_detail.show;
 		},
-
+		
+		//修改活动状态
 		change_status : function(item){
 			if(item.news_status == 2){
 				return ;
@@ -65,7 +66,6 @@ Vue.component("news", {
 				return ;
 			}
 			var that = this;
-			console.log(item)
 
 			$.ajax({
 				url : vue.global.config.base_url + "/api/m/news/change_status",
@@ -76,6 +76,41 @@ Vue.component("news", {
 				data : JSON.stringify({
 					news_id : item.news_id,
 					news_status : {1:3,3:1}[item.news_status]
+				}),
+				success : function(res){
+					res = vue.global.common.res_handle(res);
+					if(res.status !== 2000){
+						that.ctrl.alert({
+							message : res.error_message
+						});
+						return ;
+					}
+
+					that.ctrl.alert({
+						message : "切换成功"
+					})
+					that.get_data();
+				}
+			})
+		},
+
+		//修改置顶状态
+		change_top : function(item){
+			if(!confirm("确定切换活动置顶状态?")){
+				return ;
+			}
+
+			var that = this;
+
+			$.ajax({
+				url : vue.global.config.base_url + "/api/m/news/set_top",
+				headers : {
+					'Content-Type' : "Application/json"
+				},
+				method : "post",
+				data : JSON.stringify({
+					news_id : item.news_id,
+					is_top : {1:2,2:1}[item.is_top]
 				}),
 				success : function(res){
 					res = vue.global.common.res_handle(res);
@@ -126,6 +161,9 @@ Vue.component("news", {
 					</td>
 					<td @click="change_status(props.item)">
 						{{ {1:'上线',3:'下线',2:'待审核'}[props.item.news_status] }}
+					</td>
+					<td @click="change_top(props.item)">
+						{{ {1:'已置顶',2:'不置顶'}[props.item.is_top] }}
 					</td>
 				</template>
 			</v-data-table>

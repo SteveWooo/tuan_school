@@ -62,6 +62,9 @@ module.exports = async (req, res, next)=>{
 			//默认拉全部
 		}
 
+		if(query.is_top){
+			condition.is_top = query.is_top;
+		}
 		var result = await swc.db.models.news.findAndCountAll({
 			where : condition,
 			include : {
