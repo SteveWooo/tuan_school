@@ -11,6 +11,15 @@ async function models_defined(swc){
 		create_at : {type : Sequelize.STRING()},
 		update_at : {type : Sequelize.STRING()},
 	})
+	swc.db.models.user_subscripts = swc.db.seq.define("user_subscripts", {
+		club_id : {type : Sequelize.STRING(32)},
+		user_id : {type : Sequelize.STRING(32)},
+
+		create_by : {type : Sequelize.STRING(32)},
+		update_by : {type : Sequelize.STRING(32)},
+		create_at : {type : Sequelize.STRING()},
+		update_at : {type : Sequelize.STRING()},
+	})
 	swc.db.models.news = swc.db.seq.define("news", {
 		news_id : {type : Sequelize.STRING(32)},
 		club_id : {type : Sequelize.STRING(32)},
@@ -140,6 +149,17 @@ async function models_defined(swc){
 		foreignKey : "news_id",
 		targetKey : "news_id",
 		as : "news"
+	})
+
+	swc.db.models.user_subscripts.belongsTo(swc.db.models.users, {
+		foreignKey : "user_id",
+		targetKey : "user_id",
+		as : "user"
+	})
+	swc.db.models.user_subscripts.belongsTo(swc.db.models.clubs, {
+		foreignKey : "club_id",
+		targetKey : "club_id",
+		as : "club"
 	})
 	// swc.db.models.news.belongsTo(swc.db.models.clubs, {
 	// 	foreignKey : "club_id"

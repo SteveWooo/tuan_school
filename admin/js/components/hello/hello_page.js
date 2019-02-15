@@ -8,12 +8,6 @@ Vue.component("hello", {
 	methods : {
 		init : function(){
 			var scope = vue.global.pages.hello;
-			// $.ajax({
-			// 	url : vue.global.config.base_url + "/api/m/test",
-			// 	success : function(res){
-			// 		console.log(res);
-			// 	}
-			// })
 		}
 	},
 	mounted : function(){

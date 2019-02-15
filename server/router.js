@@ -94,6 +94,25 @@ var security_routers = {
 		module : require("./routers/club/news/get_join_list"),
 		path : "/api/club/news/get_join_list",
 		method : "get"
+	},
+
+	//关注列表问题：
+	subscript_club : {
+		module : require("./routers/club/info/subscript"),
+		path : "/api/club/info/subscript",
+		method : "post"
+	},
+
+	is_subscript : {
+		module : require("./routers/club/info/is_subscript"),
+		path : "/api/club/info/is_subscript",
+		method : "get"
+	},
+
+	get_subscript_club : {
+		module : require("./routers/club/info/get_subscript"),
+		path : "/api/club/info/get_subscript",
+		method : "get"
 	}
 }
 

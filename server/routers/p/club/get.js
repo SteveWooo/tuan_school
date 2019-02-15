@@ -1,3 +1,9 @@
+/*
+* @param club_id page item_per_page club_status category_id
+* 如果传了club_id，就单独返回一个club信息
+* 如果没有club_id，就根据page和item_per_page做全表查询
+* 还需要看club_status和category_id两个值（上下线状态和所属分类）
+*/
 module.exports = async function (req, res, next){
 	var query = req.query;
 	var swc = req.swc;
@@ -35,7 +41,6 @@ module.exports = async function (req, res, next){
 		conditions.club_status = query.club_status;
 	}
 
-	//筛选属于自己的
 	if(query.category_id){
 		conditions.category_id = query.category_id;
 	}
